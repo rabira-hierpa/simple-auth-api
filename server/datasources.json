@@ -1,0 +1,32 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongo_db": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "simpleAuth_db",
+    "name": "mongo_db",
+    "connector": "mongodb"
+  },
+  "emailDs": {
+    "name": "emailDs",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "<your_email_address>",
+          "pass": "<your_password"
+        }
+      }
+    ]
+  }
+}

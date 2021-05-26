@@ -1,0 +1,267 @@
+{
+  "name": "Student",
+  "base": "User",
+  "strict": true,
+  "idInjection": true,
+  "options": {
+    "validateUpsert": false
+  },
+  "hidden": [
+    "password"
+  ],
+  "mixins": {
+    "TimeStamp": true,
+    "SoftDelete": true,
+    "RowCount": true
+  },
+  "protected": [
+    "password"
+  ],
+  "properties": {
+    "idno": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "password": {
+      "type": "string",
+      "required": true
+    },
+    "key": {
+      "type": "string"
+    },
+    "program": {
+      "type": "string"
+    },
+    "field": {
+      "type": "string"
+    },
+    "avatarName": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "middleName": {
+      "type": "string"
+    },
+    "phoneNo": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "nationality": {
+      "type": "string"
+    },
+    "birthDate": {
+      "type": "date"
+    },
+    "maritalStatus": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "updatedDate": {
+      "type": "date"
+    },
+    "createdBy": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "CustomAccessToken",
+      "foreignKey": "userId",
+      "options": {
+        "disableInclude": true
+      }
+    },
+    "userRole": {
+      "type": "belongsTo",
+      "model": "UserRole",
+      "foreignKey": ""
+    },
+    "courses": {
+      "type": "hasMany",
+      "model": "Course",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "addresses": {
+      "type": "hasOne",
+      "model": "Address",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "eCPs": {
+      "type": "hasOne",
+      "model": "ECP",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "documents": {
+      "type": "hasMany",
+      "model": "Document",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "schools": {
+      "type": "hasMany",
+      "model": "School",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "accountApprovals": {
+      "type": "hasOne",
+      "model": "AccountApproval",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "paymentApprovals": {
+      "type": "hasOne",
+      "model": "PaymentApproval",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "assignedCourses": {
+      "type": "hasMany",
+      "model": "AssignedCourse",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "payments": {
+      "type": "hasMany",
+      "model": "Payment",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "alerts": {
+      "type": "hasMany",
+      "model": "Alert",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "gradeReports": {
+      "type": "hasMany",
+      "model": "GradeReport",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "department": {
+      "type": "belongsTo",
+      "model": "Department",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$admin",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "updateAttributes"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "registerUser"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$admin",
+      "permission": "ALLOW",
+      "property": "registerAdmin"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "deleteById"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$admin",
+      "permission": "ALLOW",
+      "property": "replaceById"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "updatePassword"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "patchAttributes"
+    }
+  ],
+  "methods": {}
+}

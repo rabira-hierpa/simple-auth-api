@@ -1,0 +1,48 @@
+{
+  "name": "AccountApproval",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true,
+    "SoftDelete": true,
+    "RowCount": true
+  },
+  "properties": {
+    "approvedDate": {
+      "type": "date"
+    },
+    "status": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "string"
+    },
+    "appCounter": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "student": {
+      "type": "belongsTo",
+      "model": "Student",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "userAccount": {
+      "type": "belongsTo",
+      "model": "UserAccount",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
